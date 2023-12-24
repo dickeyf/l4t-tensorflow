@@ -12,6 +12,7 @@ RUN cd /text && \
     . oss_scripts/configure.sh && \
     . oss_scripts/prepare_tf_dep.sh && \
     cd /text && \
+    cat WORKSPACE &&  \
     bazel build --enable_runfiles oss_scripts/pip_package:build_pip_package && \
     ./bazel-bin/oss_scripts/pip_package/build_pip_package .
 
@@ -19,3 +20,4 @@ FROM dustynv/l4t-tensorflow:tf2-r36.2.0
 
 COPY --from=builder /text/tensorflow_text*.whl ./
 RUN pip install ./tensorflow_text*.whl
+RUN pip install "tf-models-official==2.14.*"
