@@ -8,8 +8,8 @@ RUN curl -fSsL ${BAZEL_URL}/${BAZEL_EXEC} -o /usr/bin/bazel && chmod +x /usr/bin
 
 RUN git clone https://github.com/tensorflow/text.git && cd /text && git checkout "2.14"
 RUN cd /text && \
-    source oss_scripts/configure.sh && \
-    source oss_scripts/prepare_tf_dep.sh && \
+    . oss_scripts/configure.sh && \
+    . oss_scripts/prepare_tf_dep.sh && \
     cd /text && \
     bazel build --enable_runfiles oss_scripts/pip_package:build_pip_package && \
     ./bazel-bin/oss_scripts/pip_package/build_pip_package .
