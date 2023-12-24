@@ -3,6 +3,10 @@ kind: Pod
 metadata:
   name: kaniko-demo
 spec:
+  tolerations:
+    - key: nvidia.com/gpu
+      operator: Exists
+      effect: NoExecute
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:

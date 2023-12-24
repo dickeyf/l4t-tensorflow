@@ -12,7 +12,7 @@ Based on : https://snyk.io/blog/building-docker-images-kubernetes/
 
 ```
 kubectl create ns kaniko
-kubectl create secret docker-registry reg-credentials
+kubectl create secret docker-registry -n kaniko reg-credentials
 --docker-server=<docker-server> --docker-username=<username> --docker-password=<password> --docker-email=<email>
-kubectl apply -f kaniko.yaml
+kubectl apply -n kaniko -f kaniko.yaml
 ```
