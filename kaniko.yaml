@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: kaniko-demo
+  name: build-l4t
 spec:
   tolerations:
     - key: nvidia.com/gpu
