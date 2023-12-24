@@ -7,7 +7,7 @@ ARG BAZEL_EXEC=bazel-${BAZEL_VERSION}-linux-arm64
 SHELL ["/bin/bash", "-c"]
 RUN curl -fSsL ${BAZEL_URL}/${BAZEL_EXEC} -o /usr/bin/bazel && chmod +x /usr/bin/bazel
 
-RUN git clone https://github.com/tensorflow/text.git && cd /text && git checkout "2.14"
+RUN git clone https://github.com/tensorflow/text.git && cd /text #&& git checkout "2.14"
 RUN cd /text && \
     cat WORKSPACE && \
     . oss_scripts/configure.sh && \
