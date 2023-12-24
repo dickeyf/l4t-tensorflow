@@ -9,13 +9,10 @@ RUN curl -fSsL ${BAZEL_URL}/${BAZEL_EXEC} -o /usr/bin/bazel && chmod +x /usr/bin
 
 RUN git clone https://github.com/tensorflow/text.git && cd /text #&& git checkout "2.14"
 RUN cd /text && \
-    cat WORKSPACE && \
     . oss_scripts/configure.sh && \
-    cat WORKSPACE && \
     . oss_scripts/prepare_tf_dep.sh && \
-    cat WORKSPACE && \
+    sed -i "s/project_version = .*\$/project_version = \"$(python3 -c 'import tensorflow as tf; print(tf.__version__)')\"/" oss_scripts/pip_package/setup.py && \
     cd /text && \
-    cat WORKSPACE &&  \
     bazel build --enable_runfiles oss_scripts/pip_package:build_pip_package && \
     ./bazel-bin/oss_scripts/pip_package/build_pip_package .
 
