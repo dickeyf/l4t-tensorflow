@@ -4,6 +4,7 @@ ARG BAZEL_VERSION=6.1.0
 ARG BAZEL_URL=https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}
 ARG BAZEL_EXEC=bazel-${BAZEL_VERSION}-linux-arm64
 
+SHELL ["/bin/bash", "-c"]
 RUN curl -fSsL ${BAZEL_URL}/${BAZEL_EXEC} -o /usr/bin/bazel && chmod +x /usr/bin/bazel
 
 RUN git clone https://github.com/tensorflow/text.git && cd /text && git checkout "2.14"
